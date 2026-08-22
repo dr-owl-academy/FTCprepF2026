@@ -7,25 +7,32 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 
 
 @TeleOp
-public class HarrisonTest extends OpMode{
+public class HarrisonTest extends OpMode {
 
-private DcMotor testMotor=null;
+    private DcMotor testMotor = null;
 
-private TouchSensor touchSensor;
+    private TouchSensor touchSensor;
 
     @Override
-    public void init () {
-        testMotor=hardwareMap.get(DcMotor.class,"testMotor");
-        touchSensor=hardwareMap.get(TouchSensor.class,"touchSensor");
-telemetry.addData("Status","Initialized");
+    public void init() {
+        testMotor = hardwareMap.get(DcMotor.class, "testMotor");
+        touchSensor = hardwareMap.get(TouchSensor.class, "touchSensor");
+        telemetry.addData("Status", "Initialized");
     }
+
     @Override
-    public void loop(){
-        if (touchSensor.isPressed());
+    public void loop() {
+        if (touchSensor.isPressed()) ;
         testMotor.setPower(0.2);
+        {
+            if (!touchSensor.isPressed()){
+                testMotor.setPower(0);
+            }
 
 
-        telemetry.addData("touch sensor status",touchSensor.isPressed());
-telemetry.addData("motor power",testMotor.getPower());}
+                telemetry.addData("touch sensor status", touchSensor.isPressed());
+            telemetry.addData("motor power", testMotor.getPower());
+        }
 
     }
+}
