@@ -21,13 +21,15 @@ public class andytest extends OpMode {
 
     @Override
     public void loop() {
-        if (touchSensor.isPressed()) {
-            testMotor.setPower(0.2);
-            if (!touchSensor.isPressed()) testMotor.setPower(0);{
+        if (touchSensor.isPressed())
+            testMotor.setPower(0.2);{
+            }
+            if (!touchSensor.isPressed())
+                testMotor.setPower(0);{
             }
 
             telemetry.addData("touch sensor status", touchSensor.isPressed());
             telemetry.addData("motor power", testMotor.getPower());
-        }
+
     }
 }
