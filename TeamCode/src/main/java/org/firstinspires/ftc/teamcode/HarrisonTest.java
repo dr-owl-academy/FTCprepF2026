@@ -22,17 +22,20 @@ public class HarrisonTest extends OpMode {
 
     @Override
     public void loop() {
+        /*
         if (touchSensor.isPressed()) ;
-        testMotor.setPower(0.2);
         {
-            if (!touchSensor.isPressed()){
-                testMotor.setPower(0);
+            testMotor.setPower(0.2);
+            {
+                if (!touchSensor.isPressed()) {
+                    testMotor.setPower(0);
+                }
+
+*/
+                telemetry.addData("touch sensor status", touchSensor.isPressed());
+                telemetry.addData("motor power", testMotor.getPower());
             }
 
-
-                telemetry.addData("touch sensor status", touchSensor.isPressed());
-            telemetry.addData("motor power", testMotor.getPower());
         }
-
     }
 }
