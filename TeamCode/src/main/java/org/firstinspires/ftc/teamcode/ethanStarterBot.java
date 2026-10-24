@@ -255,7 +255,11 @@ public class ethanStarterBot extends OpMode {
             leftBackPower /= max;
             rightBackPower /= max;
         }
+        if (intakePower != 0) {
 
+        }
+
+        }
         /*
          * Send calculated power to wheels
          */
@@ -293,5 +297,6 @@ public class ethanStarterBot extends OpMode {
         } else {
             windmillServo.setPower(0);
         }
-    }
-}
+
+
+
