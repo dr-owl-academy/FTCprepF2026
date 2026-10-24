@@ -256,7 +256,10 @@ public class ethanStarterBot extends OpMode {
             rightBackPower /= max;
         }
         if (intakePower != 0) {
-
+            leftFrontPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+            rightFrontPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+            rightBackPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+            leftBackPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
         }
 
         }
