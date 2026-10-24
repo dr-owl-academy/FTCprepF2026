@@ -76,7 +76,7 @@ public class ethanStarterBot extends OpMode {
     public final int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
     public final int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
 
-
+    public final double DRIVE_WITH_INTAKE_MAX_VELOCITY = 0.7; // 70%
     /*
      * These four variables store the power we need to apply to the motors. In other cases, we may
      * choose to declare these variables inside the mecanumDrive() function, instead we declare them
@@ -256,9 +256,7 @@ public class ethanStarterBot extends OpMode {
             rightBackPower /= max;
         }
         if (intakePower != 0) {
-            (0.75);
-        } else {
-            mecanumDrive().setSpeed(1.0);
+
         }
 
         }
