@@ -96,7 +96,7 @@ public class Siddh_starter_bot extends OpMode {
     @Override
     public void init() {
 
-        /*
+     /*
          * Initialize the hardware variables. Note that the strings used here as parameters
          * to 'get' must correspond to the names assigned during the robot configuration
          * step.
@@ -105,7 +105,7 @@ public class Siddh_starter_bot extends OpMode {
         rightFrontDrive = hardwareMap.get(DcMotor.class, "rightFront");
         leftBackDrive = hardwareMap.get(DcMotor.class, "leftBack");
         rightBackDrive = hardwareMap.get(DcMotor.class, "rightBack");
-        intake = hardwareMap.get(DcMotor.class, "intake/");
+        intake = hardwareMap.get(DcMotor.class, "intake");
         launcher = hardwareMap.get(DcMotorEx.class, "flywheel");
         windmillServo = hardwareMap.get(CRServo.class, "transfer");
         leftIntakeServo = hardwareMap.get(CRServo.class, "leftIntake");
