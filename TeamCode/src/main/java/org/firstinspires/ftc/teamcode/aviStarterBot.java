@@ -47,7 +47,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
  * we will also need to adjust the "PIDF" coefficients with some that are a better fit for our application.
  */
 
-@TeleOp(name = "Mec BioBuzz StarterBot Teleop", group = "StarterBot")
+@TeleOp(name = "aviStarterBot", group = "StarterBot")
 //@Disabled
 public class aviStarterBot extends OpMode {
 
@@ -75,6 +75,8 @@ public class aviStarterBot extends OpMode {
      */
     public final int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
     public final int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
+
+    public final double DRIVE_WITH_INTAKE_MAX_VELOCITY = 0.7; // 70%
 
 
     /*
@@ -213,6 +215,7 @@ public class aviStarterBot extends OpMode {
 
         launch();
 
+
         /*
          * Here we set our intake motor and servos to their intake power. The order of operations
          * here is important though. The gamepad triggers define the starting point for the intake
@@ -255,6 +258,17 @@ public class aviStarterBot extends OpMode {
             leftBackPower /= max;
             rightBackPower /= max;
         }
+
+        /* New code: Set speed to 70% when robot is moving forward.
+         */
+
+        if (intakePower != 0){
+            leftFrontPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+            rightFrontPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+            rightBackPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+            leftBackPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+        }
+
 
         /*
          * Send calculated power to wheels
