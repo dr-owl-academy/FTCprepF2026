@@ -256,7 +256,9 @@ public class ethanStarterBot extends OpMode {
             rightBackPower /= max;
         }
         if (intakePower != 0) {
-
+            (0.75);
+        } else {
+            mecanumDrive().setSpeed(1.0);
         }
 
         }
