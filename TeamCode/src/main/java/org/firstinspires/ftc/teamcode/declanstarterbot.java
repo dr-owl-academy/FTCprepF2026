@@ -266,7 +266,7 @@ public class declanstarterbot extends OpMode {
             /*
              * Send calculated power to wheels
              */
-            leftFrontDrive.setPower(leftFrontPower);
+        leftFrontDrive.setPower(leftFrontPower);
         rightFrontDrive.setPower(rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
         rightBackDrive.setPower(rightBackPower);
