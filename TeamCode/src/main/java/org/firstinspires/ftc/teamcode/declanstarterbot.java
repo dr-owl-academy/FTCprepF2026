@@ -33,7 +33,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 /*
- * This file includes a teleop (driver-controlled) file for the goBILDA® StarterBot with Mecanum
+ * This file includes a teleop (driver-controlled) file for the go BILDA® StarterBot with mecanum
  * Wheels for the 2026-2027 FIRST® Tech Challenge. On top of a mecanum wheel drivetrain, it uses
  * one motor driving an intake roller, two servos which pull elements out of corners, and a high-speed
  * launcher motor.
@@ -47,9 +47,9 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
  * we will also need to adjust the "PIDF" coefficients with some that are a better fit for our application.
  */
 
-@TeleOp(name = "aviStarterBot", group = "StarterBot")
+@TeleOp(name = "Mec BioBuzz StarterBot Teleop", group = "StarterBot")
 //@Disabled
-public class aviStarterBot extends OpMode {
+public class declanstarterbot extends OpMode {
 
     // Declare OpMode members.
     private DcMotor leftFrontDrive = null;
@@ -75,8 +75,6 @@ public class aviStarterBot extends OpMode {
      */
     public final int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
     public final int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
-
-    public final double DRIVE_WITH_INTAKE_MAX_VELOCITY = 0.7; // 70%
 
 
     /*
@@ -137,7 +135,7 @@ public class aviStarterBot extends OpMode {
         intake.setZeroPowerBehavior(BRAKE);
 
         /*
-         * Here we set our launcher to the RUN_USING_ENCODER runmode.
+         * Here we set our launcher to the RUN_USING_ENCODER run mode.
          * If you notice that you have no control over the velocity of the motor, it just jumps
          * right to a number much higher than your set point, make sure that your encoders are plugged
          * into the port right beside the motor itself. And that the motors polarity is consistent
@@ -215,7 +213,6 @@ public class aviStarterBot extends OpMode {
 
         launch();
 
-
         /*
          * Here we set our intake motor and servos to their intake power. The order of operations
          * here is important though. The gamepad triggers define the starting point for the intake
@@ -252,28 +249,24 @@ public class aviStarterBot extends OpMode {
         max = Math.max(max, Math.abs(leftBackPower));
         max = Math.max(max, Math.abs(rightBackPower));
 
+
+
         if (max > 1.0) {
             leftFrontPower /= max;
             rightFrontPower /= max;
             leftBackPower /= max;
             rightBackPower /= max;
+
         }
 
-        /* New code: Set speed to 70% when robot is moving forward.
-         */
-
-        if (intakePower != 0){
-            leftFrontPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
-            rightFrontPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
-            rightBackPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
-            leftBackPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+        if (intakePower != 0) {
+            leftFrontPower
         }
 
-
-        /*
-         * Send calculated power to wheels
-         */
-        leftFrontDrive.setPower(leftFrontPower);
+            /*
+             * Send calculated power to wheels
+             */
+            leftFrontDrive.setPower(leftFrontPower);
         rightFrontDrive.setPower(rightFrontPower);
         leftBackDrive.setPower(leftBackPower);
         rightBackDrive.setPower(rightBackPower);
