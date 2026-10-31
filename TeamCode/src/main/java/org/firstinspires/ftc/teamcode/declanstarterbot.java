@@ -76,6 +76,7 @@ public class declanstarterbot extends OpMode {
     public final int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
     public final int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
 
+    public final double DRIVE_WITH_INTAKE_MAX_VELOCITY = 0.7; // 70% speed
 
     /*
      * These four variables store the power we need to apply to the motors. In other cases, we may
@@ -259,10 +260,12 @@ public class declanstarterbot extends OpMode {
 
         }
 
-        if (intakePower != 0) {
-            leftFrontPower
+        if (intakePower != 0){
+            leftFrontPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY; // leftFrontPower = leftFrontPower * DRIVE_WITH_INTAKE_MAX_VELOCITY
+            rightFrontPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+            rightBackPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+            leftBackPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
         }
-
             /*
              * Send calculated power to wheels
              */
