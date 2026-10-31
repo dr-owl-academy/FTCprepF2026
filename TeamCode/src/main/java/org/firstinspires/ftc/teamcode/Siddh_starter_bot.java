@@ -51,6 +51,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 //@Disabled
 public class Siddh_starter_bot extends OpMode {
 
+    private static final double DRIVE_WITH_INTAKE_MAX_VELOCITY = 0.7;
     // Declare OpMode members.
     private DcMotor leftFrontDrive = null;
     private DcMotor leftBackDrive = null;
@@ -255,9 +256,13 @@ public class Siddh_starter_bot extends OpMode {
             leftBackPower /= max;
             rightBackPower /= max;
 
-            if (gamepad1.rightTriggerWasPressed()) max = 0.7;
         }
-
+        if (intakePower != 0){
+            leftFrontPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+            rightFrontPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+            rightBackPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+            leftBackPower *= DRIVE_WITH_INTAKE_MAX_VELOCITY;
+        }
         /*
          * Send calculated power to wheels
          */
