@@ -77,12 +77,6 @@ public class aviStarterBot extends OpMode {
     public int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
     public final double DRIVE_WITH_INTAKE_MAX_VELOCITY = 0.7; // 70%
 
-    if (gamepad2.dpad_up == true) {
-        LAUNCHER_TARGET_VELOCITY += 100;
-        LAUNCHER_MIN_VELOCITY += 100;
-
-    }
-
 
     /*
      * These four variables store the power we need to apply to the motors. In other cases, we may
@@ -221,6 +215,19 @@ public class aviStarterBot extends OpMode {
         launch();
 
 
+        if (gamepad2.dpad_up) {
+            LAUNCHER_TARGET_VELOCITY += 100;
+            LAUNCHER_MIN_VELOCITY += 100;
+
+        }
+        if (gamepad2.dpad_down) {
+            LAUNCHER_TARGET_VELOCITY -= 100;
+            LAUNCHER_MIN_VELOCITY -= 100;
+
+        }
+
+
+
         /*
          * Here we set our intake motor and servos to their intake power. The order of operations
          * here is important though. The gamepad triggers define the starting point for the intake
@@ -238,6 +245,9 @@ public class aviStarterBot extends OpMode {
          */
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftFrontPower, rightFrontPower);
         telemetry.addData("Triggers", "left (%.2f, right (%.2f)",gamepad1.left_trigger, gamepad1.right_trigger);
+        telemetry.addData("Launcher Target Velocity: ", LAUNCHER_TARGET_VELOCITY);
+        telemetry.addData("Launcher Minimum Velocity: ", LAUNCHER_MIN_VELOCITY);
+
     }
 
     /*
