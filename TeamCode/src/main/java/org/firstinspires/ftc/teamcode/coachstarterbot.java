@@ -73,8 +73,8 @@ public class coachstarterbot extends OpMode {
      * in the launch() function to only run the windmill servo when the motor is spinning fast
      * enough to make a successful throw.
      */
-    public final int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
-    public final int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
+    public int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
+    public int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
 
 
     /*
@@ -209,9 +209,18 @@ public class coachstarterbot extends OpMode {
          * allow us to avoid setting the same motors/servos power more than once per loop. That can
          * create erratic behavior.
          */
-        intakePower = gamepad1.right_trigger - gamepad1.left_trigger;
+        intakePower = gamepad2.right_trigger - gamepad2.left_trigger;
 
-        if (gamepad1.left_bumper) {
+        if(gamepad2.dpad_up) {
+            LAUNCHER_TARGET_VELOCITY += 100;
+            LAUNCHER_MIN_VELOCITY -=100;
+        }
+        if(gamepad2.dpad_down) {
+            LAUNCHER_TARGET_VELOCITY -=100;
+            LAUNCHER_MIN_VELOCITY -=100;
+        }
+
+        if (gamepad2.left_bumper) {
             windmillServo.setPower(1);
         }
         launch();
