@@ -73,10 +73,15 @@ public class aviStarterBot extends OpMode {
      * in the launch() function to only run the windmill servo when the motor is spinning fast
      * enough to make a successful throw.
      */
-    public final int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
-    public final int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
-
+    public int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
+    public int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
     public final double DRIVE_WITH_INTAKE_MAX_VELOCITY = 0.7; // 70%
+
+    if (gamepad2.dpad_up == true) {
+        LAUNCHER_TARGET_VELOCITY += 100;
+        LAUNCHER_MIN_VELOCITY += 100;
+
+    }
 
 
     /*
