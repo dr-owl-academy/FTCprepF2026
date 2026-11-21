@@ -73,18 +73,13 @@ public class ethanStarterBot extends OpMode {
      * in the launch() function to only run the windmill servo when the motor is spinning fast
      * enough to make a successful throw.
      */
-    public final int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
-    public final int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
+    public int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
+    public int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
 
     public final double DRIVE_WITH_INTAKE_MAX_VELOCITY = 0.7; // 70%
-    /
-    if gamepad2.dpad_up
-    else public final int LAUNCHER_TARGET_VELOCITY + 100;
-    if gamepad2.dpad_down
-    else LAUNCHER_MIN_VELOCITY - 100;
+    //
 
-
-     /* These four variables store the power we need to apply to the motors. In other cases, we may
+    /* These four variables store the power we need to apply to the motors. In other cases, we may
      * choose to declare these variables inside the mecanumDrive() function, instead we declare them
      * here so that we can access them in our main loop for telemetry.
      */
@@ -191,6 +186,7 @@ public class ethanStarterBot extends OpMode {
      */
     @Override
     public void loop() {
+
         /*
          * Here we call a function called mecanumDrive. The mecanumDrive function takes the input from
          * the joysticks, and applies power to the drive motors to move the robot as requested
@@ -216,6 +212,17 @@ public class ethanStarterBot extends OpMode {
          * create erratic behavior.
          */
         intakePower = gamepad1.right_trigger - gamepad1.left_trigger;
+
+        if (gamepad2.dpad_up) {
+            LAUNCHER_TARGET_VELOCITY += 100;
+            LAUNCHER_MIN_VELOCITY += 100;
+
+        }
+        if (gamepad2.dpad_down) {
+            LAUNCHER_TARGET_VELOCITY -= 100;
+            LAUNCHER_MIN_VELOCITY -= 100;
+
+        }
 
         launch();
 
