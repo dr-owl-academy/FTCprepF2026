@@ -77,6 +77,10 @@ public class Siddh_starter_bot extends OpMode {
     public final int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
     public final int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
 
+    if gamepad2.dpad_up
+    else LAUNCHER_TARGET_VELOCITY + 100;
+    if gamepad2.dpad_down
+    else LAUNCHER_MIN_VELOCITY - 100;
 
     /*
      * These four variables store the power we need to apply to the motors. In other cases, we may
@@ -231,6 +235,9 @@ public class Siddh_starter_bot extends OpMode {
          */
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftFrontPower, rightFrontPower);
         telemetry.addData("Triggers", "left (%.2f, right (%.2f)",gamepad1.left_trigger, gamepad1.right_trigger);
+
+
+
     }
 
     /*
