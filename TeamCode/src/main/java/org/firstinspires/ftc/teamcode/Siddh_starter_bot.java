@@ -74,13 +74,11 @@ public class Siddh_starter_bot extends OpMode {
      * in the launch() function to only run the windmill servo when the motor is spinning fast
      * enough to make a successful throw.
      */
-    public final int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
-    public final int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
+    public int LAUNCHER_TARGET_VELOCITY = 1250; //2678 RPM
+    public int LAUNCHER_MIN_VELOCITY = 1200; //2571 RPM
 
-    if gamepad2.dpad_up
-    else LAUNCHER_TARGET_VELOCITY + 100;
-    if gamepad2.dpad_down
-    else LAUNCHER_MIN_VELOCITY - 100;
+
+
 
     /*
      * These four variables store the power we need to apply to the motors. In other cases, we may
@@ -214,6 +212,12 @@ public class Siddh_starter_bot extends OpMode {
          * allow us to avoid setting the same motors/servos power more than once per loop. That can
          * create erratic behavior.
          */
+
+        if(gamepad2.dpad_up) {
+            LAUNCHER_TARGET_VELOCITY += 100;
+            LAUNCHER_MIN_VELOCITY -= 100;
+        }
+
         intakePower = gamepad1.right_trigger - gamepad1.left_trigger;
 
         launch();
