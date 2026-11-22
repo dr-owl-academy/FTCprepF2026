@@ -215,7 +215,12 @@ public class Siddh_starter_bot extends OpMode {
 
         if(gamepad2.dpad_up) {
             LAUNCHER_TARGET_VELOCITY += 100;
-            LAUNCHER_MIN_VELOCITY -= 100;
+            LAUNCHER_MIN_VELOCITY += 100;
+        }
+
+            if(gamepad2.dpad_down) {
+                LAUNCHER_TARGET_VELOCITY -= 100;
+                LAUNCHER_MIN_VELOCITY -= 100;
         }
 
         intakePower = gamepad1.right_trigger - gamepad1.left_trigger;
